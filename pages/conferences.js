@@ -115,7 +115,7 @@ export async function getServerSideProps(context) {
   const url =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://ally.vercel.app";
+      : process.env.NEXTAUTH_URL;
   const res = await axios.get(`${url}/api/conferences`);
   const data = await res.data;
   return {
