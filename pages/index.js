@@ -1,65 +1,143 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import Layout from "../components/Layout";
+import { useSession, signIn } from "next-auth/client";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const [session, loading] = useSession();
+  const router = useRouter();
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Layout>
+      <Row style={{ marginTop: 20 }}>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: 20,
+          }}
+          xs={12}
+          md={6}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+          <h1 style={{ fontWeight: 900 }}>When oldage meets orphanage</h1>
+          <p>
+            aimed at bringing together individuals suffering from loneliness and
+            depression and those lacking nurturing love of elderly role models.
+          </p>
+          <Button
+            onClick={() => {
+              if (session) router.replace("/books");
+              else signIn();
+            }}
+            variant="success"
+          >
+            Get started
+          </Button>
+        </Col>
+        <Col style={{ padding: 20 }} xs={12} md={6}>
+          <Image src="ill1.svg" fluid />
+        </Col>
+      </Row>
+      <hr />
+      <Row style={{ marginTop: 20 }}>
+        <Col style={{ padding: 20 }} xs={12} md={6}>
+          <Image style={{ padding: 30 }} src="ill5.svg" fluid />
+        </Col>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: 20,
+          }}
+          xs={12}
+          md={6}
+        >
+          <h1 style={{ fontWeight: 900 }}>Play games</h1>
+          <p>
+            allows users to play and enjoy video games which makes you feel
+            better
+          </p>
+          <Button
+            onClick={() => {
+              if (session) router.replace("/games");
+              else signIn();
+            }}
+            variant="success"
+          >
+            Explore
+          </Button>
+        </Col>
+      </Row>
+      <hr />
+      <Row style={{ marginTop: 20 }}>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: 20,
+          }}
+          xs={12}
+          md={6}
+        >
+          <h1 style={{ fontWeight: 900 }}>Video conferences</h1>
+          <p>
+            allows old-age homes and orphanages to sign up and organise
+            meetings, thus facilitating children and senior citizens to spend
+            time together.
+          </p>
+          <Button
+            onClick={() => {
+              if (session) router.replace("/conferences");
+              else signIn();
+            }}
+            variant="success"
+          >
+            Explore
+          </Button>
+        </Col>
+        <Col style={{ padding: 20 }} xs={12} md={6}>
+          <Image style={{ padding: 30 }} src="ill4.svg" fluid />
+        </Col>
+      </Row>
+      <hr />
+      <Row style={{ marginTop: 20 }}>
+        <Col style={{ padding: 20 }} xs={12} md={6}>
+          <Image style={{ padding: 30 }} src="ill3.svg" fluid />
+        </Col>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            padding: 20,
+          }}
+          xs={12}
+          md={6}
+        >
+          <h1 style={{ fontWeight: 900 }}>Donations </h1>
+          <p>
+            allows users to volunteer and donate to old-age homes and orphanages
+            through it.
+          </p>
+          <Button
+            onClick={() => {
+              if (session) router.replace("/donate");
+              else signIn();
+            }}
+            variant="success"
+          >
+            Explore
+          </Button>
+        </Col>
+      </Row>
+    </Layout>
+  );
 }
