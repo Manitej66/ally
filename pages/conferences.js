@@ -112,7 +112,11 @@ export default function Conference({ data }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await axios.get("http://localhost:3000/api/conferences");
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://ally.vercel.app";
+  const res = await axios.get(`${url}/api/conferences`);
   const data = await res.data;
   return {
     props: { data: data.data },

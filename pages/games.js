@@ -42,7 +42,11 @@ export default function Games({ data }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await axios.get("http://localhost:3000/api/games");
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://ally.vercel.app";
+  const res = await axios.get(`${url}/api/games`);
   const data = await res.data;
   return {
     props: { data: data.data },
