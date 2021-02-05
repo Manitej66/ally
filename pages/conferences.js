@@ -111,7 +111,7 @@ export default function Conference({ data }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const url =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
