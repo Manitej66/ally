@@ -42,7 +42,7 @@ export default function Conference({ data }) {
       <Row style={{ margin: 5 }}>
         {data.map((book) => (
           <Col key={book.data.title} md={4} style={{ padding: 10 }}>
-            <Card border="dark">
+            <Card>
               <Card.Img
                 style={{
                   height: 200,

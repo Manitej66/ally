@@ -9,7 +9,7 @@ export default function Games({ data }) {
       <Row style={{ margin: 5 }}>
         {data.map((book) => (
           <Col key={book.data.name} md={4} style={{ padding: 10 }}>
-            <Card border="dark">
+            <Card>
               <Card.Img
                 style={{
                   height: 200,

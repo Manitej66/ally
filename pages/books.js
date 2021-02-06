@@ -8,13 +8,13 @@ export default function Books({ data }) {
       <Row style={{ margin: 5 }}>
         {data.map((book) => (
           <Col key={book.data.name} md={4} style={{ padding: 10 }}>
-            <Card border="dark">
+            <Card style={{ width: 310 }}>
               <Card.Img
                 style={{
                   height: 200,
                   padding: 5,
                   objectPosition: "center",
-                  objectFit: "cover",
+                  objectFit: "contain",
                 }}
                 variant="top"
                 src={book.data.cover_url}
@@ -23,10 +23,11 @@ export default function Books({ data }) {
                 <Card.Title style={{ fontWeight: 700, fontSize: 24 }}>
                   {book.data.name}
                 </Card.Title>
+                <Card.Text>{book.data.desc}</Card.Text>
                 <a
                   style={{
                     padding: 8,
-                    backgroundColor: "#ff5e78",
+                    backgroundColor: "#161d6f",
                     borderRadius: 2,
                     color: "white",
                   }}
