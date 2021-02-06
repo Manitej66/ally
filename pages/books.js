@@ -8,7 +8,7 @@ export default function Books({ data }) {
       <Row style={{ margin: 5 }}>
         {data.map((book) => (
           <Col key={book.data.name} md={4} style={{ padding: 10 }}>
-            <Card style={{ width: 310 }}>
+            <Card>
               <Card.Img
                 style={{
                   height: 200,
